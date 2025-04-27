@@ -356,7 +356,7 @@ def cli_web(
       app,
       host="0.0.0.0",
       port=port,
-      reload=True,
+      reload=False if os.name == 'nt' else True,
   )
 
   server = uvicorn.Server(config)
@@ -456,7 +456,7 @@ def cli_api_server(
       ),
       host="0.0.0.0",
       port=port,
-      reload=True,
+      reload=False if os.name == 'nt' else True,
   )
   server = uvicorn.Server(config)
   server.run()
